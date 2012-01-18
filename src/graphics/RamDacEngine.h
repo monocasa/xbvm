@@ -1,0 +1,58 @@
+#ifndef GRAPHICS_RAMDACENGINE_H
+#define GRAPHICS_RAMDACENGINE_H
+
+#include "graphics/Engine.h"
+
+#define NV2A_REG_PRAMDAC_CURSOR_POS  (0x300)
+#define NV2A_REG_PRAMDAC_NVPLL       (0x500)
+#define NV2A_REG_PRAMDAC_MPLL        (0x504)
+#define NV2A_REG_PRAMDAC_VPLL        (0x508)
+#define NV2A_REG_PRAMDAC_PLL_CONTROL (0x50C)
+#define NV2A_REG_PRAMDAC_UNKNOWN_630 (0x630)
+#define NV2A_REG_PRAMDAC_VDISPEND    (0x800)
+#define NV2A_REG_PRAMDAC_VTOTAL      (0x804)
+#define NV2A_REG_PRAMDAC_VCRTC       (0x808)
+#define NV2A_REG_PRAMDAC_VSYNCSTART  (0x80C)
+#define NV2A_REG_PRAMDAC_VSYNCEND    (0x810)
+#define NV2A_REG_PRAMDAC_VVALIDSTART (0x814)
+#define NV2A_REG_PRAMDAC_VVALIDEND   (0x818)
+#define NV2A_REG_PRAMDAC_HDISPEND    (0x820)
+#define NV2A_REG_PRAMDAC_HTOTAL      (0x824)
+#define NV2A_REG_PRAMDAC_HCRTC       (0x828)
+#define NV2A_REG_PRAMDAC_HSYNCSTART  (0x82C)
+#define NV2A_REG_PRAMDAC_HSYNCEND    (0x830)
+#define NV2A_REG_PRAMDAC_HVALIDSTART (0x834)
+#define NV2A_REG_PRAMDAC_HVALIDEND   (0x838)
+#define NV2A_REG_PRAMDAC_UNKNOWN_84C (0x84C)
+#define NV2A_REG_PRAMDAC_UNKNOWN_880 (0x880)
+#define NV2A_REG_PRAMDAC_UNKNOWN_884 (0x884)
+#define NV2A_REG_PRAMDAC_UNKNOWN_888 (0x888)
+#define NV2A_REG_PRAMDAC_UNKNOWN_88C (0x88C)
+#define NV2A_REG_PRAMDAC_UNKNOWN_890 (0x890)
+#define NV2A_REG_PRAMDAC_UNKNOWN_894 (0x894)
+#define NV2A_REG_PRAMDAC_UNKNOWN_898 (0x898)
+#define NV2A_REG_PRAMDAC_UNKNOWN_89C (0x89C)
+#define NV2A_REG_PRAMDAC_UNKNOWN_8C4 (0x8C4)
+
+class Nv2a;
+
+class RamDacEngine : public Engine
+{
+public:
+	RamDacEngine( Nv2a &nv2a );
+	virtual ~RamDacEngine();
+
+	virtual const char* GetName() { return "NV2A RAMDAC"; }
+
+	virtual bool MmioWrite32( u32 reg, u32 data );
+	virtual u32 MmioRead32( u32 reg );
+
+	virtual u32 GetRegBase() { return NV2A_MMIO_BASE_PRAMDAC; }
+
+private:
+	u32 m_regs[ 1024 ];
+};
+
+
+#endif /*GRAPHICS_RAMDACENGINE_H*/
+

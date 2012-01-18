@@ -1,0 +1,2 @@
+#include "ide/FlatDiskImage.h"
+

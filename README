@@ -1,0 +1,3 @@
+This is an LLE Xbox emulator targeting Linux with KVM. Very hacky currently and with little support for system software. Currently completes Phase 0 Initialization in MSBIOS and goes to etherboot on Cromwell.
+
+This assumes that you have a 512 byte copy of the 1.0 MCPX secret ROM as the file /opt/xbvm/mcpx.bin and your 1MiB copy of your BIOS in /opt/xbvm/tsop.bin
